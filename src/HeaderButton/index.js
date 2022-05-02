@@ -1,12 +1,12 @@
 // @flow
 
-import React from "react"
+import { colors } from "@mui/material"
 import Button from "@mui/material/Button"
-import { styled } from "@mui/styles"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
+import { styled } from "@mui/styles"
+import React from "react"
 import { useIconDictionary } from "../icon-dictionary.js"
 import { iconMapping } from "../icon-mapping.js"
-import { colors } from "@mui/material"
 
 const theme = createTheme()
 const defaultNameIconMapping = iconMapping
@@ -56,12 +56,13 @@ export const HeaderButton = ({
   disabled,
   onClick,
   hideText = false,
+  className,
 }) => {
   const customIconMapping = useIconDictionary()
   return (
     <ThemeProvider theme={theme}>
       <StyledButton onClick={onClick} disabled={disabled}>
-        <ButtonInnerContent>
+        <ButtonInnerContent className={className}>
           <IconContainer textHidden={hideText}>
             {icon || getIcon(name, customIconMapping)}
           </IconContainer>
@@ -77,3 +78,4 @@ export const HeaderButton = ({
 }
 
 export default HeaderButton
+
