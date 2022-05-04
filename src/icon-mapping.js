@@ -1,13 +1,15 @@
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline"
+import ExitIcon from "@mui/icons-material/ExitToApp"
+import FullscreenIcon from "@mui/icons-material/Fullscreen"
+import HelpIcon from "@mui/icons-material/Help"
+import HotkeysIcon from "@mui/icons-material/Keyboard"
 import BackIcon from "@mui/icons-material/KeyboardArrowLeft"
 import NextIcon from "@mui/icons-material/KeyboardArrowRight"
-import PlayIcon from "@mui/icons-material/PlayArrow"
 import PauseIcon from "@mui/icons-material/Pause"
-import SettingsIcon from "@mui/icons-material/Settings"
-import HelpIcon from "@mui/icons-material/Help"
-import FullscreenIcon from "@mui/icons-material/Fullscreen"
-import ExitIcon from "@mui/icons-material/ExitToApp"
+import PlayIcon from "@mui/icons-material/PlayArrow"
 import QueuePlayNextIcon from "@mui/icons-material/QueuePlayNext"
-import HotkeysIcon from "@mui/icons-material/Keyboard"
+import SaveIcon from "@mui/icons-material/Save"
+import SettingsIcon from "@mui/icons-material/Settings"
 
 export const iconMapping = {
   back: BackIcon,
@@ -23,11 +25,14 @@ export const iconMapping = {
   fullscreen: FullscreenIcon,
   exit: ExitIcon,
   quit: ExitIcon,
-  save: ExitIcon,
+  save: SaveIcon,
   done: ExitIcon,
   clone: QueuePlayNextIcon,
   hotkeys: HotkeysIcon,
   shortcuts: HotkeysIcon,
+  submit: CheckCircleOutlineIcon,
+  query: HelpIcon,
 }
 
 export default iconMapping
+
