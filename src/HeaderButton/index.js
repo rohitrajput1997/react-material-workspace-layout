@@ -11,10 +11,10 @@ import { iconMapping } from "../icon-mapping.js"
 const theme = createTheme()
 const defaultNameIconMapping = iconMapping
 
-const getIcon = (name, customIconMapping, icon_name) => {
+const getIcon = (iconName, customIconMapping) => {
   const Icon =
-    customIconMapping[icon_name.toLowerCase()] ||
-    defaultNameIconMapping[icon_name.toLowerCase()] ||
+    customIconMapping[iconName.toLowerCase()] ||
+    defaultNameIconMapping[iconName.toLowerCase()] ||
     defaultNameIconMapping.help
   return <Icon />
 }
@@ -57,25 +57,22 @@ export const HeaderButton = ({
   onClick,
   hideText = false,
   className,
-  icon_name,
+  iconName,
 }) => {
   const customIconMapping = useIconDictionary()
   return (
     <ThemeProvider theme={theme}>
-      <StyledButton onClick={onClick} disabled={disabled} className={className}>
-        <ButtonInnerContent>
-          <IconContainer textHidden={hideText}>
-            {icon || getIcon(name, customIconMapping, icon_name)}
-          </IconContainer>
-          {!hideText && (
-            <Text>
-              <div>{name}</div>
-            </Text>
-          )}
-        </ButtonInnerContent>
-      </StyledButton>
+      <Button
+        onClick={onClick}
+        disabled={disabled}
+        className={`${className}_btn btn`}
+        startIcon={icon || getIcon(iconName, customIconMapping)}
+      >
+        {name}
+      </Button>
     </ThemeProvider>
   )
 }
 
 export default HeaderButton
+

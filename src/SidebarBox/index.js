@@ -1,24 +1,24 @@
 // @flow
 
-import React, { useState, memo, useCallback } from "react"
-import Paper from "@mui/material/Paper"
-import { makeStyles } from "@mui/styles"
-import { createTheme, ThemeProvider } from "@mui/material/styles"
 import ExpandIcon from "@mui/icons-material/ExpandMore"
-import IconButton from "@mui/material/IconButton"
 import Collapse from "@mui/material/Collapse"
-import { grey } from "@mui/material/colors"
-import classnames from "classnames"
-import useEventCallback from "use-event-callback"
+import IconButton from "@mui/material/IconButton"
+import { createTheme, ThemeProvider } from "@mui/material/styles"
 import Typography from "@mui/material/Typography"
-import { useIconDictionary } from "../icon-dictionary.js"
+import { makeStyles } from "@mui/styles"
 import ResizePanel from "@seveibar/react-resize-panel"
+import classnames from "classnames"
+import React, { memo, useCallback, useState } from "react"
+import useEventCallback from "use-event-callback"
+import { useIconDictionary } from "../icon-dictionary.js"
 
 const theme = createTheme()
 const useStyles = makeStyles((theme) => ({
   container: {
-    borderBottom: `2px solid ${grey[400]}`,
-    "&:first-child": { borderTop: `1px solid ${grey[400]}` },
+    border: "1px solid #005f86",
+    borderRadius: "6px",
+    margin: "10px 0 8px 10px",
+    cursor: "pointer",
   },
   header: {
     display: "flex",
@@ -28,13 +28,14 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: 16,
     paddingRight: 12,
     "& .iconContainer": {
-      color: grey[600],
+      color: "#005f86 !important",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       "& .MuiSvgIcon-root": {
         width: 16,
         height: 16,
+        color: "#005f86 !important",
       },
     },
   },
@@ -43,9 +44,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     fontWeight: 800,
     paddingLeft: 8,
-    color: grey[800],
+    color: "#005f86 !important",
     "& span": {
-      color: grey[600],
+      color: "#005f86 !important",
       fontSize: 11,
     },
   },
@@ -69,6 +70,9 @@ const useStyles = makeStyles((theme) => ({
       overflowY: "visible",
       overflow: "visible",
     },
+  },
+  titleIcon: {
+    color: "#005f86 !important",
   },
 }))
 
@@ -121,8 +125,11 @@ export const SidebarBox = ({
   const TitleIcon = customIconMapping[title.toLowerCase()]
   return (
     <ThemeProvider theme={theme}>
-      <div className={classes.container}>
-        <div className={classes.header}>
+      <div
+        className={classes.container}
+        style={{ height: !expanded && "40px" }}
+      >
+        <div className={classes.header} onClick={toggleExpanded}>
           <div className="iconContainer">
             {icon || <TitleIcon className={classes.titleIcon} />}
           </div>
@@ -144,7 +151,12 @@ export const SidebarBox = ({
             <ResizePanel direction="s" style={{ height: 200 }}>
               <div
                 className="panel"
-                style={{ display: "block", overflow: "hidden", height: 500 }}
+                style={{
+                  display: "block",
+                  overflow: "hidden",
+                  height: 500,
+                  minWidth: "15rem",
+                }}
               >
                 {content}
               </div>

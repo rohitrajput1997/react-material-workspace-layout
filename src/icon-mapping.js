@@ -25,14 +25,13 @@ export const iconMapping = {
   fullscreen: FullscreenIcon,
   exit: ExitIcon,
   quit: ExitIcon,
-  save: SaveIcon,
+  "save & next": SaveIcon,
   done: ExitIcon,
   clone: QueuePlayNextIcon,
   hotkeys: HotkeysIcon,
   shortcuts: HotkeysIcon,
   submit: CheckCircleOutlineIcon,
-  query: HelpIcon,
+  "add query": HelpIcon,
 }
 
 export default iconMapping
-

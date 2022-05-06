@@ -1,12 +1,12 @@
-import React from "react"
-import { styled } from "@mui/styles"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
+import { styled } from "@mui/styles"
+import React from "react"
+import useDimensions from "react-use-dimensions"
 import Header from "../Header"
+import { IconDictionaryContext } from "../icon-dictionary.js"
 import IconSidebar from "../IconSidebar"
 import RightSidebar from "../RightSidebar"
 import WorkContainer from "../WorkContainer"
-import useDimensions from "react-use-dimensions"
-import { IconDictionaryContext } from "../icon-dictionary.js"
 
 const emptyAr = []
 const emptyObj = {}
@@ -21,12 +21,13 @@ const Container = styled("div")(({ theme }) => ({
   maxWidth: "100vw",
 }))
 const SidebarsAndContent = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexGrow: 1,
+  // display: "flex",
+  // flexGrow: 1,
   width: "100%",
   height: "100%",
   overflow: "hidden",
-  maxWidth: "100vw",
+  overflowY: "scroll",
+  // maxWidth: "100vw",
 }))
 
 export default ({
@@ -58,14 +59,16 @@ export default ({
             />
           )}
           <SidebarsAndContent ref={sidebarAndContentRef}>
-            {iconSidebarItems.length === 0 ? null : (
-              <IconSidebar
-                onClickItem={onClickIconSidebarItem}
-                selectedTools={selectedTools}
-                items={iconSidebarItems}
-              />
-            )}
-            <WorkContainer>{children}</WorkContainer>
+            <div style={{ display: "flex" }}>
+              {iconSidebarItems.length === 0 ? null : (
+                <IconSidebar
+                  onClickItem={onClickIconSidebarItem}
+                  selectedTools={selectedTools}
+                  items={iconSidebarItems}
+                />
+              )}
+              <WorkContainer>{children}</WorkContainer>
+            </div>
             {rightSidebarItems.length === 0 ? null : (
               <RightSidebar
                 initiallyExpanded={rightSidebarExpanded}

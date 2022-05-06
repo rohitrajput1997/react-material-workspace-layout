@@ -1,6 +1,6 @@
 {
   "name": "ns_workflow_workspace",
-  "version": "1.0.11",
+  "version": "1.0.20",
   "repository": {
     "type": "git",
     "url": "https://github.com/UniversalDataTool/react-material-workspace-layout.git"
@@ -24,7 +24,8 @@
     "build:storybook": "build-storybook -s public",
     "build": "npm run build:babel && cp ./package.json ./dist/package.json && cp ./README.md ./dist/README.md",
     "build:babel": "NODE_ENV=production babel ./src --ignore \"src/**/*.story.js\" --out-dir=./dist",
-    "release": "npm run build && cd dist && npm publish"
+    "release": "npm run build && cd dist && npm publish",
+    "dev_build": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
