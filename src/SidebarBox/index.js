@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     border: "1px solid #005f86",
     borderRadius: "6px",
-    margin: "10px 0 8px 10px",
+    margin: "10px 10px 8px 10px",
     cursor: "pointer",
   },
   header: {

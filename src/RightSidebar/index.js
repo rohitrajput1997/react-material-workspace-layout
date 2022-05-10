@@ -72,6 +72,7 @@ const InnerSliderContent = styled("div")(({ theme }) => ({
   right: 0,
   top: 0,
   bottom: 0,
+  overflowY: "auto",
 }))
 
 const getInitialExpandedState = () => {
@@ -97,7 +98,14 @@ export const RightSidebar = ({ children, initiallyExpanded, height }) => {
     }
   }, [initiallyExpanded, expanded])
 
-  const containerStyle = useMemo(() => ({ height: height || "100%" }), [height])
+  const containerStyle = useMemo(
+    () => ({
+      height: height || "100%",
+      padding: "0px 10px",
+      overflowY: "scroll",
+    }),
+    [height]
+  )
 
   return (
     <ThemeProvider theme={theme}>
@@ -121,4 +129,3 @@ export const RightSidebar = ({ children, initiallyExpanded, height }) => {
 }
 
 export default RightSidebar
-
