@@ -125,12 +125,9 @@ export const SidebarBox = ({
   const TitleIcon = customIconMapping[title.toLowerCase()]
   return (
     <ThemeProvider theme={theme}>
-      <div
-        className={classes.container}
-        style={{ height: !expanded && "40px" }}
-      >
-        <div className={classes.header} onClick={toggleExpanded}>
-          <div className="iconContainer">
+      <div className={classes.container}>
+        <div className={classes.header}>
+          <div className="iconContainer" onClick={toggleExpanded}>
             {icon || <TitleIcon className={classes.titleIcon} />}
           </div>
           <Typography className={classes.title}>
@@ -151,12 +148,7 @@ export const SidebarBox = ({
             <ResizePanel direction="s" style={{ height: 200 }}>
               <div
                 className="panel"
-                style={{
-                  display: "block",
-                  overflow: "hidden",
-                  height: 500,
-                  minWidth: "15rem",
-                }}
+                style={{ display: "block", overflow: "hidden", height: 500 }}
               >
                 {content}
               </div>

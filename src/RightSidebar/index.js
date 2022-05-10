@@ -1,3 +1,5 @@
+import ExpandIcon from "@mui/icons-material/KeyboardArrowLeft"
+import ContractIcon from "@mui/icons-material/KeyboardArrowRight"
 import ButtonBase from "@mui/material/ButtonBase"
 import { grey } from "@mui/material/colors"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
@@ -6,17 +8,17 @@ import React, { useEffect, useMemo, useReducer } from "react"
 
 const theme = createTheme()
 const Container = styled("div")(({ theme }) => ({
-  // width: 0,
-  // display: "flex",
-  // flexDirection: "column",
-  // height: "100%",
+  width: 0,
+  display: "flex",
+  flexDirection: "column",
+  height: "100%",
   flexShrink: 0,
   backgroundColor: "#fff",
-  // position: "relative",
+  position: "relative",
   transition: "width 500ms",
-  // "&.expanded": {
-  //   width: 300,
-  // },
+  "&.expanded": {
+    width: 300,
+  },
 }))
 
 const Expander = styled(ButtonBase)(({ theme }) => ({
@@ -60,15 +62,16 @@ const Slider = styled("div")(({ theme }) => ({
   bottom: 0,
   overflow: "hidden",
   transition: "opacity 500ms, left 500ms, width 500ms",
+  "&.expanded": {
+    width: 300,
+  },
 }))
 const InnerSliderContent = styled("div")(({ theme }) => ({
-  // width: 300,
-  // position: "absolute",
-  // right: 0,
-  // top: 0,
-  // bottom: 0,
-  display: "flex",
-  justifyContent: "space-around",
+  width: 300,
+  position: "absolute",
+  right: 0,
+  top: 0,
+  bottom: 0,
 }))
 
 const getInitialExpandedState = () => {
@@ -94,18 +97,28 @@ export const RightSidebar = ({ children, initiallyExpanded, height }) => {
     }
   }, [initiallyExpanded, expanded])
 
-  const containerStyle = useMemo(
-    () => ({ margin: "auto", height: "auto" || height }),
-    [height]
-  )
+  const containerStyle = useMemo(() => ({ height: height || "100%" }), [height])
 
   return (
     <ThemeProvider theme={theme}>
       <Container className={expanded ? "expanded" : ""} style={containerStyle}>
-        <InnerSliderContent>{children}</InnerSliderContent>
+        <Slider className={expanded ? "expanded" : ""}>
+          <InnerSliderContent>{children}</InnerSliderContent>
+        </Slider>
+        <Expander
+          onClick={toggleExpanded}
+          className={expanded ? "expanded" : ""}
+        >
+          {expanded ? (
+            <ContractIcon className="icon" />
+          ) : (
+            <ExpandIcon className="icon" />
+          )}
+        </Expander>
       </Container>
     </ThemeProvider>
   )
 }
 
 export default RightSidebar
+

@@ -21,13 +21,12 @@ const Container = styled("div")(({ theme }) => ({
   maxWidth: "100vw",
 }))
 const SidebarsAndContent = styled("div")(({ theme }) => ({
-  // display: "flex",
-  // flexGrow: 1,
+  display: "flex",
+  flexGrow: 1,
   width: "100%",
   height: "100%",
   overflow: "hidden",
-  overflowY: "scroll",
-  // maxWidth: "100vw",
+  maxWidth: "100vw",
 }))
 
 export default ({
@@ -59,16 +58,14 @@ export default ({
             />
           )}
           <SidebarsAndContent ref={sidebarAndContentRef}>
-            <div style={{ display: "flex" }}>
-              {iconSidebarItems.length === 0 ? null : (
-                <IconSidebar
-                  onClickItem={onClickIconSidebarItem}
-                  selectedTools={selectedTools}
-                  items={iconSidebarItems}
-                />
-              )}
-              <WorkContainer>{children}</WorkContainer>
-            </div>
+            {iconSidebarItems.length === 0 ? null : (
+              <IconSidebar
+                onClickItem={onClickIconSidebarItem}
+                selectedTools={selectedTools}
+                items={iconSidebarItems}
+              />
+            )}
+            <WorkContainer>{children}</WorkContainer>
             {rightSidebarItems.length === 0 ? null : (
               <RightSidebar
                 initiallyExpanded={rightSidebarExpanded}
