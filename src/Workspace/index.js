@@ -43,6 +43,7 @@ export default ({
   hideHeader = false,
   hideHeaderText = false,
   children,
+  rightMenu = true,
 }) => {
   const [sidebarAndContentRef, sidebarAndContent] = useDimensions()
   return (
@@ -70,6 +71,7 @@ export default ({
               <RightSidebar
                 initiallyExpanded={rightSidebarExpanded}
                 height={sidebarAndContent.height || 0}
+                rightMenu={rightMenu}
               >
                 {rightSidebarItems}
               </RightSidebar>

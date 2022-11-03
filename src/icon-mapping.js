@@ -10,6 +10,8 @@ import PlayIcon from "@mui/icons-material/PlayArrow"
 import QueuePlayNextIcon from "@mui/icons-material/QueuePlayNext"
 import SaveIcon from "@mui/icons-material/Save"
 import SettingsIcon from "@mui/icons-material/Settings"
+import VolumeOffIcon from "@mui/icons-material/VolumeOff"
+import VolumeUpIcon from "@mui/icons-material/VolumeUp"
 
 export const iconMapping = {
   back: BackIcon,
@@ -32,6 +34,9 @@ export const iconMapping = {
   shortcuts: HotkeysIcon,
   submit: CheckCircleOutlineIcon,
   "add query": HelpIcon,
+  mute: VolumeOffIcon,
+  unmute: VolumeUpIcon,
 }
 
 export default iconMapping
+

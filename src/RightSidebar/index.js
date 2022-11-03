@@ -1,7 +1,7 @@
 import ExpandIcon from "@mui/icons-material/KeyboardArrowLeft"
 import ContractIcon from "@mui/icons-material/KeyboardArrowRight"
+import { Button } from "@mui/material"
 import ButtonBase from "@mui/material/ButtonBase"
-import { grey } from "@mui/material/colors"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { styled } from "@mui/styles"
 import React, { useEffect, useMemo, useReducer } from "react"
@@ -20,27 +20,32 @@ const Container = styled("div")(({ theme }) => ({
     width: 300,
   },
 }))
-
+let buttonStyle = {
+  alignItems: "center",
+  // justifyContent: "flex-start",
+  // borderTopLeftRadius: "50%",
+  // borderBottomLeftRadius: "50%",
+  boxSizing: "border-box",
+  // borderTop: `1px solid ${grey[400]}`,
+  // borderBottom: `1px solid ${grey[400]}`,
+  // borderLeft: `1px solid ${grey[400]}`,
+  boxShadow: "-1px 2px 5px rgba(0,0,0,0.2)",
+  backgroundColor: "#fff",
+  transition: "opacity 500ms, left 500ms, width 500ms",
+  opacity: 0.4,
+}
 const Expander = styled(ButtonBase)(({ theme }) => ({
   width: 23,
   height: 40,
   display: "flex",
   overflow: "hidden",
-  alignItems: "center",
-  justifyContent: "flex-start",
-  borderTopLeftRadius: "50%",
-  borderBottomLeftRadius: "50%",
-  boxSizing: "border-box",
-  borderTop: `1px solid ${grey[400]}`,
-  borderBottom: `1px solid ${grey[400]}`,
-  borderLeft: `1px solid ${grey[400]}`,
-  boxShadow: "-1px 2px 5px rgba(0,0,0,0.2)",
-  backgroundColor: "#fff",
-  position: "absolute",
+
+  position: "fixed",
+  right: "320px",
   top: "calc(50% - 20px)",
   left: -23,
   zIndex: 9999,
-  transition: "opacity 500ms, left 500ms, width 500ms",
+
   "&.expanded": {
     left: -20,
     width: 20,
@@ -83,7 +88,12 @@ const getInitialExpandedState = () => {
   }
 }
 
-export const RightSidebar = ({ children, initiallyExpanded, height }) => {
+export const RightSidebar = ({
+  children,
+  initiallyExpanded,
+  height,
+  rightMenu,
+}) => {
   const [expanded, toggleExpanded] = useReducer(
     (state) => !state,
     initiallyExpanded === undefined
@@ -103,27 +113,47 @@ export const RightSidebar = ({ children, initiallyExpanded, height }) => {
       height: height || "100%",
       padding: "0px 10px",
       overflowY: "scroll",
+      position: "absolute",
+      zIndex: 100,
+      right: 0,
+      boxShadow: "rgb(0 0 0 / 10%) -11px 9px 10px",
     }),
     [height]
   )
 
   return (
     <ThemeProvider theme={theme}>
-      <Container className={expanded ? "expanded" : ""} style={containerStyle}>
-        <Slider className={expanded ? "expanded" : ""}>
-          <InnerSliderContent>{children}</InnerSliderContent>
-        </Slider>
-        <Expander
-          onClick={toggleExpanded}
+      {rightMenu && (
+        <Container
           className={expanded ? "expanded" : ""}
+          style={containerStyle}
         >
-          {expanded ? (
-            <ContractIcon className="icon" />
-          ) : (
-            <ExpandIcon className="icon" />
+          <Slider className={expanded ? "expanded" : ""}>
+            <InnerSliderContent>{children}</InnerSliderContent>
+          </Slider>
+          {rightMenu && (
+            <Button
+              onClick={() => {
+                toggleExpanded()
+              }}
+              // className={expanded ? "expanded" : ""}
+              style={{
+                position: "fixed",
+                top: "calc(50% - 20px)",
+                right: expanded ? "320px" : "20px",
+                border: "1px solid #005f86",
+                ...buttonStyle,
+              }}
+            >
+              {expanded ? (
+                <ContractIcon className="icon" />
+              ) : (
+                <ExpandIcon className="icon" />
+              )}
+            </Button>
           )}
-        </Expander>
-      </Container>
+        </Container>
+      )}
     </ThemeProvider>
   )
 }

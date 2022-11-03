@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   expandedContent: {
-    maxHeight: 300,
+    maxHeight: 500,
     overflowY: "auto",
     "&.noScroll": {
       overflowY: "visible",
@@ -164,3 +164,4 @@ export default memo(
   SidebarBox,
   (prev, next) => prev.title === next.title && prev.children === next.children
 )
+
