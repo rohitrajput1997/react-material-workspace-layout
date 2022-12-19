@@ -1,7 +1,7 @@
-import React from "react"
-import { styled } from "@mui/styles"
-import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { grey } from "@mui/material/colors"
+import { createTheme, ThemeProvider } from "@mui/material/styles"
+import { styled } from "@mui/styles"
+import React from "react"
 
 const theme = createTheme()
 const Container = styled("div")(({ theme }) => ({
@@ -27,7 +27,11 @@ const ShadowOverlay = styled("div")(({ theme }) => ({
 export const WorkContainer = React.forwardRef(({ children }, ref) => {
   return (
     <ThemeProvider theme={theme}>
-      <Container ref={ref}>
+      <Container
+        className="annoatation_imageCanvas"
+        ref={ref}
+        id="annoatation_imageCanvas"
+      >
         {children}
         <ShadowOverlay />
       </Container>

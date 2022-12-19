@@ -1,8 +1,8 @@
+import Box from "@mui/material/Box"
+import { createTheme, ThemeProvider } from "@mui/material/styles"
+import { styled } from "@mui/styles"
 import React from "react"
 import HeaderButton from "../HeaderButton"
-import Box from "@mui/material/Box"
-import { styled } from "@mui/styles"
-import { createTheme, ThemeProvider } from "@mui/material/styles"
 
 const theme = createTheme()
 const emptyObj = {}
@@ -35,7 +35,10 @@ export const Header = ({
 }: Props) => {
   return (
     <ThemeProvider theme={theme}>
-      <Container>
+      <Container
+        id="annoatation_headerSidebar"
+        className="annoatation_headerSidebar"
+      >
         <Box flexGrow={1}>{leftSideContent}</Box>
         {items.map((item) => (
           <HeaderButton

@@ -58,7 +58,7 @@ export default ({
               items={headerItems}
             />
           )}
-          <SidebarsAndContent ref={sidebarAndContentRef}>
+          <SidebarsAndContent ref={sidebarAndContentRef} id="sidebarContent">
             {iconSidebarItems.length === 0 ? null : (
               <IconSidebar
                 onClickItem={onClickIconSidebarItem}

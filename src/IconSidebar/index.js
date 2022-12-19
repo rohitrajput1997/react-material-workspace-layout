@@ -1,10 +1,10 @@
-import React from "react"
-import { styled } from "@mui/styles"
-import { createTheme, ThemeProvider } from "@mui/material/styles"
 import IconButton from "@mui/material/IconButton"
-import { iconMapping } from "../icon-mapping.js"
-import { useIconDictionary } from "../icon-dictionary"
+import { createTheme, ThemeProvider } from "@mui/material/styles"
 import Tooltip from "@mui/material/Tooltip"
+import { styled } from "@mui/styles"
+import React from "react"
+import { useIconDictionary } from "../icon-dictionary"
+import { iconMapping } from "../icon-mapping.js"
 
 const theme = createTheme()
 const Container = styled("div")(({ theme }) => ({
@@ -35,7 +35,10 @@ export const IconSidebar = ({
   const customIconMapping = useIconDictionary()
   return (
     <ThemeProvider theme={theme}>
-      <Container>
+      <Container
+        className="annoatation_iconSidebar"
+        id="annoatation_iconSidebar"
+      >
         {items.map((item) => {
           let NameIcon =
             customIconMapping[item.name.toLowerCase()] ||

@@ -125,8 +125,13 @@ export const RightSidebar = ({
     <ThemeProvider theme={theme}>
       {rightMenu && (
         <Container
-          className={expanded ? "expanded" : ""}
+          className={
+            expanded
+              ? "expanded annoatation_rightSidebar"
+              : "annoatation_rightSidebar"
+          }
           style={containerStyle}
+          id="annoatation_rightSidebar"
         >
           <Slider className={expanded ? "expanded" : ""}>
             <InnerSliderContent>{children}</InnerSliderContent>

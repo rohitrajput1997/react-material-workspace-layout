@@ -130,7 +130,7 @@ export const SidebarBox = ({
           <div className="iconContainer" onClick={toggleExpanded}>
             {icon || <TitleIcon className={classes.titleIcon} />}
           </div>
-          <Typography className={classes.title}>
+          <Typography className={classes.title} onClick={toggleExpanded}>
             {title} <span>{subTitle}</span>
           </Typography>
           <IconButton onClick={toggleExpanded} className={classes.expandButton}>
