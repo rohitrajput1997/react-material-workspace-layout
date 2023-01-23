@@ -148,6 +148,7 @@ export const RightSidebar = ({
                 top: "calc(50% - 20px)",
                 right: expanded ? "320px" : "20px",
                 border: "1px solid #005f86",
+                zIndex: 1000,
                 ...buttonStyle,
               }}
             >
