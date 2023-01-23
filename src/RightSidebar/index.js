@@ -33,6 +33,7 @@ let buttonStyle = {
   backgroundColor: "#fff",
   transition: "opacity 500ms, left 500ms, width 500ms",
   opacity: 0.4,
+  zIndex: 1000,
 }
 const Expander = styled(ButtonBase)(({ theme }) => ({
   width: 23,
