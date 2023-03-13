@@ -1,6 +1,6 @@
 // @flow
 
-import { CircularProgress, colors } from "@mui/material"
+import { CircularProgress, colors, Tooltip } from "@mui/material"
 import Button from "@mui/material/Button"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { styled } from "@mui/styles"
@@ -62,20 +62,22 @@ export const HeaderButton = ({
   const customIconMapping = useIconDictionary()
   return (
     <ThemeProvider theme={theme}>
-      <Button
-        onClick={onClick}
-        disabled={disabled}
-        className={`${className}_btn btn`}
-        startIcon={
-          disabled === true ? (
-            <CircularProgress size={"1.5rem"} />
-          ) : (
-            icon || getIcon(iconName, customIconMapping)
-          )
-        }
-      >
-        {name}
-      </Button>
+      <Tooltip title={name}>
+        <Button
+          onClick={onClick}
+          disabled={disabled}
+          className={`${className}_btn btn`}
+          startIcon={
+            disabled === true ? (
+              <CircularProgress size={"1.5rem"} />
+            ) : (
+              icon || getIcon(iconName, customIconMapping)
+            )
+          }
+        >
+          {/* {name} */}
+        </Button>
+      </Tooltip>
     </ThemeProvider>
   )
 }
