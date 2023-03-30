@@ -1,12 +1,14 @@
 // @flow
 
-import { CircularProgress, colors } from "@mui/material"
+import { CircularProgress, colors, Tooltip } from "@mui/material"
 import Button from "@mui/material/Button"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { styled } from "@mui/styles"
 import React from "react"
 import { useIconDictionary } from "../icon-dictionary.js"
 import { iconMapping } from "../icon-mapping.js"
+import { makeStyles } from "@mui/styles"
+import { tooltipClasses } from "@mui/material/Tooltip"
 
 const theme = createTheme()
 const defaultNameIconMapping = iconMapping
@@ -18,6 +20,19 @@ const getIcon = (iconName, customIconMapping) => {
     defaultNameIconMapping.help
   return <Icon />
 }
+
+const useStyle = makeStyles((theme) => ({
+  [`& .${tooltipClasses.arrow}`]: {
+    color: theme.palette.common.black,
+  },
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: theme.palette.common.black,
+  },
+  tooltip: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+}))
 
 const StyledButton = styled(Button)(({ theme }) => ({
   textTransform: "none",
@@ -36,7 +51,7 @@ const IconContainer = styled("div")(({ textHidden }) => ({
   height: textHidden ? 32 : 20,
   paddingTop: textHidden ? 8 : 0,
   "& .MuiSvgIcon-root": {
-    width: 18,
+    width: "auto",
     height: 18,
   },
 }))
@@ -60,25 +75,34 @@ export const HeaderButton = ({
   iconName,
 }) => {
   const customIconMapping = useIconDictionary()
+  const classes = useStyle()
+
   return (
     <ThemeProvider theme={theme}>
-      <Button
-        onClick={onClick}
-        disabled={disabled}
-        className={`${className}_btn btn`}
-        startIcon={
-          disabled === true ? (
-            <CircularProgress size={"1.5rem"} />
-          ) : (
-            icon || getIcon(iconName, customIconMapping)
-          )
-        }
+      <Tooltip
+        arrow
+        title={name}
+        className={{ tooltip: classes.tooltip }}
+        placement="top-start"
       >
-        {name}
-      </Button>
+        <Button
+          onClick={onClick}
+          disabled={disabled}
+          className={`${className}_btn btn`}
+          // startIcon={
+          //   disabled === true ? (
+          //     <CircularProgress size={"1.5rem"} />
+          //   ) : (
+          //     icon || getIcon(iconName, customIconMapping)
+          //   )
+          // }
+        >
+          {" "}
+          {name}
+        </Button>
+      </Tooltip>
     </ThemeProvider>
   )
 }
 
 export default HeaderButton
-
