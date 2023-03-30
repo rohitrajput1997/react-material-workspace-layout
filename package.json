@@ -1,6 +1,6 @@
 {
   "name": "ns_workflow_workspace",
-  "version": "3.0.5",
+  "version": "3.0.20",
   "repository": {
     "type": "git",
     "url": "https://github.com/UniversalDataTool/react-material-workspace-layout.git"

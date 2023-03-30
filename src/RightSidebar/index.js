@@ -33,6 +33,7 @@ let buttonStyle = {
   backgroundColor: "#fff",
   transition: "opacity 500ms, left 500ms, width 500ms",
   opacity: 0.4,
+  zIndex: 1000,
 }
 const Expander = styled(ButtonBase)(({ theme }) => ({
   width: 23,
@@ -147,6 +148,7 @@ export const RightSidebar = ({
                 top: "calc(50% - 20px)",
                 right: expanded ? "320px" : "20px",
                 border: "1px solid #005f86",
+                zIndex: 1000,
                 ...buttonStyle,
               }}
             >
