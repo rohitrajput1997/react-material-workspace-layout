@@ -1,7 +1,6 @@
 import ExpandIcon from "@mui/icons-material/KeyboardArrowLeft"
 import ContractIcon from "@mui/icons-material/KeyboardArrowRight"
 import { Button } from "@mui/material"
-import ButtonBase from "@mui/material/ButtonBase"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { styled } from "@mui/styles"
 import React, { useEffect, useMemo, useReducer } from "react"
@@ -35,30 +34,6 @@ let buttonStyle = {
   opacity: 0.4,
   zIndex: 1000,
 }
-const Expander = styled(ButtonBase)(({ theme }) => ({
-  width: 23,
-  height: 40,
-  display: "flex",
-  overflow: "hidden",
-
-  position: "fixed",
-  right: "320px",
-  top: "calc(50% - 20px)",
-  left: -23,
-  zIndex: 9999,
-
-  "&.expanded": {
-    left: -20,
-    width: 20,
-    opacity: 0.4,
-    "& .icon": {
-      marginLeft: 0,
-    },
-  },
-  "& .icon": {
-    marginLeft: 3,
-  },
-}))
 
 const Slider = styled("div")(({ theme }) => ({
   position: "absolute",
@@ -125,6 +100,27 @@ export const RightSidebar = ({
   return (
     <ThemeProvider theme={theme}>
       {rightMenu && (
+        <Button
+          onClick={() => {
+            toggleExpanded()
+          }}
+          style={{
+            position: "absolute",
+            top: "calc(50% - 20px)",
+            right: expanded ? "320px" : "20px",
+            border: "1px solid #005f86",
+            zIndex: 10000000,
+            ...buttonStyle,
+          }}
+        >
+          {expanded ? (
+            <ContractIcon className="icon" />
+          ) : (
+            <ExpandIcon className="icon" />
+          )}
+        </Button>
+      )}
+      {rightMenu && (
         <Container
           className={
             expanded
@@ -137,28 +133,6 @@ export const RightSidebar = ({
           <Slider className={expanded ? "expanded" : ""}>
             <InnerSliderContent>{children}</InnerSliderContent>
           </Slider>
-          {rightMenu && (
-            <Button
-              onClick={() => {
-                toggleExpanded()
-              }}
-              // className={expanded ? "expanded" : ""}
-              style={{
-                position: "fixed",
-                top: "calc(50% - 20px)",
-                right: expanded ? "320px" : "20px",
-                border: "1px solid #005f86",
-                zIndex: 1000,
-                ...buttonStyle,
-              }}
-            >
-              {expanded ? (
-                <ContractIcon className="icon" />
-              ) : (
-                <ExpandIcon className="icon" />
-              )}
-            </Button>
-          )}
         </Container>
       )}
     </ThemeProvider>
