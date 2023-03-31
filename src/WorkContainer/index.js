@@ -31,6 +31,7 @@ export const WorkContainer = React.forwardRef(({ children }, ref) => {
         className="annoatation_imageCanvas"
         ref={ref}
         id="annoatation_imageCanvas"
+        style={{ "&::WebkitScrollbar": { display: "none" } }}
       >
         {children}
         <ShadowOverlay />
@@ -40,3 +41,4 @@ export const WorkContainer = React.forwardRef(({ children }, ref) => {
 })
 
 export default WorkContainer
+
