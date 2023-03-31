@@ -32,7 +32,7 @@ let buttonStyle = {
   backgroundColor: "#fff",
   transition: "opacity 500ms, left 500ms, width 500ms",
   opacity: 0.4,
-  zIndex: 1000,
+  zIndex: 999,
 }
 
 const Slider = styled("div")(({ theme }) => ({
@@ -109,7 +109,7 @@ export const RightSidebar = ({
             top: "calc(50% - 20px)",
             right: expanded ? "320px" : "20px",
             border: "1px solid #005f86",
-            zIndex: 10000000,
+            zIndex: 999,
             ...buttonStyle,
           }}
         >
