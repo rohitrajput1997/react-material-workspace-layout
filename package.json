@@ -1,6 +1,6 @@
 {
-  "name": "new_ns_workflow_workspace",
-  "version": "5.0.0",
+  "name": "ns_workflow_workspace",
+  "version": "3.0.20",
   "repository": {
     "type": "git",
     "url": "https://github.com/UniversalDataTool/react-material-workspace-layout.git"
@@ -13,6 +13,7 @@
     "@mui/styles": "^5.2.3",
     "@seveibar/react-resize-panel": "^0.3.7",
     "classnames": "^2.2.6",
+    "react-icons": "^4.8.0",
     "react-resize-panel": "^0.3.5",
     "react-use-dimensions": "^1.2.1",
     "use-event-callback": "^0.1.0"

@@ -1,9 +1,8 @@
-import ExpandIcon from "@mui/icons-material/KeyboardArrowLeft"
-import ContractIcon from "@mui/icons-material/KeyboardArrowRight"
 import { Button } from "@mui/material"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
 import { styled } from "@mui/styles"
 import React, { useEffect, useMemo, useReducer } from "react"
+import { TbCircleChevronLeft, TbCircleChevronRight } from "react-icons/tb"
 
 const theme = createTheme()
 const Container = styled("div")(({ theme }) => ({
@@ -21,18 +20,20 @@ const Container = styled("div")(({ theme }) => ({
 }))
 let buttonStyle = {
   alignItems: "center",
-  // justifyContent: "flex-start",
-  // borderTopLeftRadius: "50%",
-  // borderBottomLeftRadius: "50%",
   boxSizing: "border-box",
-  // borderTop: `1px solid ${grey[400]}`,
-  // borderBottom: `1px solid ${grey[400]}`,
-  // borderLeft: `1px solid ${grey[400]}`,
   boxShadow: "-1px 2px 5px rgba(0,0,0,0.2)",
   backgroundColor: "#fff",
   transition: "opacity 500ms, left 500ms, width 500ms",
-  opacity: 0.4,
-  zIndex: 999,
+  opacity: 1,
+  minWidth: "23px",
+  padding: "3px 4px",
+  zIndex: 100,
+}
+
+let icons = {
+  height: "20px",
+  width: "20px",
+  color: "#005f86 !important",
 }
 
 const Slider = styled("div")(({ theme }) => ({
@@ -108,15 +109,13 @@ export const RightSidebar = ({
             position: "absolute",
             top: "calc(50% - 20px)",
             right: expanded ? "320px" : "20px",
-            border: "1px solid #005f86",
-            zIndex: 999,
             ...buttonStyle,
           }}
         >
           {expanded ? (
-            <ContractIcon className="icon" />
+            <TbCircleChevronRight style={{ ...icons }} />
           ) : (
-            <ExpandIcon className="icon" />
+            <TbCircleChevronLeft style={{ ...icons }} />
           )}
         </Button>
       )}
