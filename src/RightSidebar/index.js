@@ -108,7 +108,7 @@ export const RightSidebar = ({
           style={{
             position: "absolute",
             top: "calc(50% - 20px)",
-            right: expanded ? "320px" : "20px",
+            right: expanded ? "300px" : "20px",
             ...buttonStyle,
           }}
         >
@@ -139,4 +139,5 @@ export const RightSidebar = ({
 }
 
 export default RightSidebar
+
 
