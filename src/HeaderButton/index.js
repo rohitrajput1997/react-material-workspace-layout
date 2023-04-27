@@ -84,7 +84,6 @@ export const HeaderButton = ({
         disabled={disabled}
         className={`${className}_btn btn`}
       >
-        {" "}
         {name}
       </Button>
     </ThemeProvider>
