@@ -79,28 +79,21 @@ export const HeaderButton = ({
 
   return (
     <ThemeProvider theme={theme}>
-      <Tooltip
-        arrow
-        title={name}
-        className={{ tooltip: classes.tooltip }}
-        placement="top-start"
+      <Button
+        onClick={onClick}
+        disabled={disabled}
+        className={`${className}_btn btn`}
+        // startIcon={
+        //   disabled === true ? (
+        //     <CircularProgress size={"1.5rem"} />
+        //   ) : (
+        //     icon || getIcon(iconName, customIconMapping)
+        //   )
+        // }
       >
-        <Button
-          onClick={onClick}
-          disabled={disabled}
-          className={`${className}_btn btn`}
-          // startIcon={
-          //   disabled === true ? (
-          //     <CircularProgress size={"1.5rem"} />
-          //   ) : (
-          //     icon || getIcon(iconName, customIconMapping)
-          //   )
-          // }
-        >
-          {" "}
-          {name}
-        </Button>
-      </Tooltip>
+        {" "}
+        {name}
+      </Button>
     </ThemeProvider>
   )
 }
