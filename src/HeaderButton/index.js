@@ -83,13 +83,6 @@ export const HeaderButton = ({
         onClick={onClick}
         disabled={disabled}
         className={`${className}_btn btn`}
-        // startIcon={
-        //   disabled === true ? (
-        //     <CircularProgress size={"1.5rem"} />
-        //   ) : (
-        //     icon || getIcon(iconName, customIconMapping)
-        //   )
-        // }
       >
         {" "}
         {name}
