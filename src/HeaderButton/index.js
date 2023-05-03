@@ -1,14 +1,14 @@
 // @flow
 
-import { CircularProgress, colors, Tooltip } from "@mui/material"
+import { LoadingButton } from "@mui/lab"
+import { colors } from "@mui/material"
 import Button from "@mui/material/Button"
 import { createTheme, ThemeProvider } from "@mui/material/styles"
-import { styled } from "@mui/styles"
+import { tooltipClasses } from "@mui/material/Tooltip"
+import { makeStyles, styled } from "@mui/styles"
 import React from "react"
 import { useIconDictionary } from "../icon-dictionary.js"
 import { iconMapping } from "../icon-mapping.js"
-import { makeStyles } from "@mui/styles"
-import { tooltipClasses } from "@mui/material/Tooltip"
 
 const theme = createTheme()
 const defaultNameIconMapping = iconMapping
@@ -79,15 +79,19 @@ export const HeaderButton = ({
 
   return (
     <ThemeProvider theme={theme}>
-      <Button
+      <LoadingButton
+        loading={disabled}
+        loadingPosition="start"
+        variant="outlined"
         onClick={onClick}
-        disabled={disabled}
         className={`${className}_btn btn`}
       >
         {name}
-      </Button>
+      </LoadingButton>
     </ThemeProvider>
   )
 }
 
 export default HeaderButton
+
+
