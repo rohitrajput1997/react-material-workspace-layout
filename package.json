@@ -1,6 +1,6 @@
 {
-  "name": "ns_workflow_workspace",
-  "version": "3.0.20",
+  "name": "new_ns_workflow_workspace",
+  "version": "6.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/UniversalDataTool/react-material-workspace-layout.git"
@@ -9,6 +9,7 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.2.1",
+    "@mui/lab": "^5.0.0-alpha.129",
     "@mui/material": "^5.2.3",
     "@mui/styles": "^5.2.3",
     "@seveibar/react-resize-panel": "^0.3.7",
